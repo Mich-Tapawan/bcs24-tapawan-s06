@@ -3,6 +3,7 @@ class PopStack:
         self.stack = []
         self.top = -1
         self.max_size = max_size
+        
     def is_full(self):
         return self.top == self.max_size - 1
    
@@ -11,16 +12,10 @@ class PopStack:
    
     def push(self, data):
         if not self.is_full():
-            if data not in self.stack:
-                self.top += 1
-                self.stack.append(data)
-                #check if it is successfully push
-                return True
-            else:
-                #element is already in stack
-                return False
+            self.top += 1
+            self.stack.append(data)
+            return True
         else:
-            #stack is full or overflow
             return "Stack overflow"
        
     def pop(self):
@@ -47,11 +42,10 @@ def palindrome_checker(string):
         s.push(char)
 
     s.display_elements()
+    
     for i in range(len(string)):
-        if s.pop() != string[i]:
-            nyakak=s.pop()
-            print(nyakak)
-            print(string[i])
+        popped = s.pop()
+        if popped != string[i]:
             print("The input is not a palindrome.")
             return False
     
@@ -69,5 +63,4 @@ for char in string:
         item.append(char)
 
 key = "".join(item)
-print(key)
 palindrome_checker(key)
