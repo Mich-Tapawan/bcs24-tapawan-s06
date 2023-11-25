@@ -53,11 +53,37 @@ def palindrome_checker(string):
     return True
 
 
-string = input("Please enter a palindrome: ").lower()
+def lower_case(string):
+    upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    lower = "abcdefghijklmnopqrstuvwxyz"
+    word = []
+
+    for char in string:
+        if char in upper:
+            get = upper.index(char)
+            new = lower[get]
+            word.append(new)
+        else:
+            word.append(char)
+    
+    return "".join(word)
+
+def isAlphaChar(char):
+    upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    lower = "abcdefghijklmnopqrstuvwxyz"
+
+    if char in upper or char in lower:
+        return True
+    
+    return False
+
+
+inp = input("Please enter a palindrome: ")
+string = lower_case(inp)
 item = []
 
 for char in string:
-    if char.isalpha() == False:
+    if isAlphaChar(char) == False:
         continue
     else:
         item.append(char)
